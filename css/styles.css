@@ -41,38 +41,40 @@ header {
     padding: 40px 100px;
     z-index: 100000;
 }
-
+ 
 .logo {
     margin-right: auto;
     cursor: pointer;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #09b3dd;
 }
 
 .nav__links {
-    /* list-style: none; */
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    list-style: none;
+    transition: all 0.3s ease;
 }
 
+/* Hides links in mobile view */
+.nav__links.mobile-hidden {
+    display: none;
+}
+
+/* Links inside the navigation */
 .nav__links li {
-    /* display: inline-block;
-    padding: 0px 20px; */
     position: relative;
-    list-style: none;
 }
 
 .nav__links li a {
-    transition: all 0.3s ease 0s;
-    position: relative;
     margin: 0 15px;
     color: #fff;
-    letter-spacing: 2px;
     font-weight: 400;
-    transition: 0.6s;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .nav__links li a:hover {
@@ -91,6 +93,36 @@ button {
 
 button:hover {
     background-color: rgba(0, 136, 169, 0.8);
+}
+
+/* Button for contact */
+.cta button {
+    /* margin-left: 20px; */
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta button:hover {
+    background-color: rgba(0, 136, 169, 0.8);
+}
+
+/* Burger Menu */
+.burger {
+    display: none; /* Hidden by default for larger screens */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    margin: 3px;
+    background-color: #fff;
+    transition: all 0.3s ease;
 }
 
 .banner {
@@ -159,13 +191,13 @@ header.sticky ul li a {
 }
 
 .modal h2 {
-    font-family: 'Arial', sans-serif; 
+    font-family: 'Poppins', sans-serif; 
     color: #fcfcfc; 
     margin-bottom: 20px; 
 }
 
 .modal label {
-    font-family: 'Arial', sans-serif; 
+    font-family: 'Poppins', sans-serif; 
     color: #ffffff; 
     display: block; 
     margin-bottom: 5px; 
@@ -179,7 +211,7 @@ textarea {
     border: 1px solid #ccc; 
     border-radius: 4px; 
     margin-bottom: 15px; 
-    font-family: 'Arial', sans-serif; 
+    font-family: 'Poppins', sans-serif; 
     font-size: 14px; 
     box-sizing: border-box; /* Ensure padding and border are included in width */
 }
@@ -219,24 +251,11 @@ button[type="submit"]:hover {
     cursor: pointer; 
 }
 
-.social-icons {
+.contact-header {
     display: flex;
     align-items: center;
-    /* margin-left: 10px; */
+    font-size: 1.5rem; /* Adjust size as needed */
 }
-
-.social-icon {
-    color: #fff; /* Icon color */
-    margin-left: 10px; /* Spacing between icons */
-    font-size: 18px; /* Icon size */
-    text-decoration: none; /* Remove underline from links */
-}
-
-.social-icon:hover {
-    color: #00aaff; /* Change color on hover (optional) */
-}
-
-
 
 
 /* ----------page---------- */
@@ -251,17 +270,22 @@ button[type="submit"]:hover {
     justify-content: space-between;
     flex-wrap: wrap;
 }
-/* ----------intro---------- */
-
+/* Intro Section */
 #Intro {
     width: 100%;
     height: 100vh;
     padding: 200px 0;
-    /* color: #ababab; */
+    display: flex; /* Enable Flexbox */
+    justify-content: space-between; /* Default: Align items side by side */
+    align-items: center; /* Center items vertically */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 
+/* Column 1: Image */
 .col-1 {
     flex-basis: 35%;
+    display: flex; /* Ensure the image is centered in its container */
+    justify-content: center; /* Horizontally center */
 }
 
 .col-1 img {
@@ -271,9 +295,13 @@ button[type="submit"]:hover {
     transition: filter 0.3s ease; /* Smooth transition for dynamic effects */
 }
 
+/* Column 2: Text */
 .col-2 {
     flex-basis: 60%;
-    align-content: center;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Vertically center */
+    align-items: flex-start; /* Align text to the left */
 }
 
 .col-2 h1 {
@@ -291,13 +319,11 @@ button[type="submit"]:hover {
     font-size: 2rem;
 }
 
+/* Sub-title */
 .sub-title {
     font-size: 3rem;
     font-weight: 700;
 }
-
-
-
 
 
 /* ----------services---------- */
@@ -359,6 +385,46 @@ button[type="submit"]:hover {
     color: #ababab;
 }
 
+.projects-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+
+.projects-list div {
+    background: #262626;
+    padding: 40px;
+    font-size: 13px;
+    font-weight: 200;
+    border-radius: 10px;
+    transition: background 0.5s, transform 0.5s;
+}
+
+.projects-list i {
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+.projects-list h2 {
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.projects-list a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.projects-list div:hover {
+    background: darkslategray;
+    transform: translateY(-10px);
+}
+
 /* ----------about---------- */
 
 #About {
@@ -366,6 +432,10 @@ button[type="submit"]:hover {
     height: 100vh;
     padding: 100px 0;
     color: #ababab;
+}
+
+.about-list p{
+    font-size: 1.5rem;
 }
 
 /* ----------footer---------- */
@@ -380,8 +450,162 @@ footer {
     align-items: center;
     padding: 20px 50px;
 }
+.social-icons {
+    display: flex;
+    gap: 10px;
+    margin-left: -10px;
+}
+
+.social-icon {
+    text-decoration: none;
+    color: #ffffff; /* Default icon color */
+    transition: color 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.social-icon:hover {
+    color: #0077b5; /* Example hover color */
+}
 
 .copyright {
     font-weight: 300;
     color: white;
+}
+
+
+/* Mobile View */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+        justify-content: center;
+    }
+
+    .nav__links {
+        position: absolute;
+        top: 15vh;
+        right: 0; /* Start aligned to the right */
+        background-color: rgba(9, 179, 221, 0.9); /* 90% transparency */
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+        z-index: 1000;
+        opacity: 0; /* Start with hidden opacity */
+        transform: translateX(100%); /* Start off-screen to the right */
+        transition: opacity 0.5s ease-in-out 0.2s, transform 0.5s ease-in-out 0.2s; /* Transition for opacity and transform */
+    }
+    
+    .nav__links.mobile-visible {
+        opacity: 1; /* Make it visible */
+        transform: translateX(0); /* Move to the center */
+    }
+    
+    
+    .nav__links li {
+        margin: 10px 0;
+    }
+    
+    .burger {
+        display: flex;
+    }
+    
+    .cta {
+        display: block;
+        padding: 10px;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px; /* Adjust margin to align with other items */
+        width: 100%; /* Make CTA take up the full width of the nav */
+    }
+
+    .cta button {
+        margin-left: -4vh;
+    }
+
+    .modal {
+        margin-top: 10%;
+    }
+
+    .modal h2 {
+        font-size: 1rem;
+    }
+    
+    .modal label {
+        font-size: 1rem;
+    }
+    
+    
+
+    #Intro {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .col-1 {
+        flex-basis: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .col-1 img {
+        max-width: 60%;
+        height: auto;
+        border-radius: 15px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .col-2 {
+        flex-basis: 100%;
+        align-items: center;
+    }
+
+    .col-2 h1, .col-2 p, .col-2 a {
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
+    .sub-title {
+        margin: -15% 0 -10%;
+        font-size: 2rem;
+    }
+
+    #Services {
+        height: auto;
+    }
+
+    #Projects {
+        height: auto;
+    }
+
+    #About {
+        height: auto;
+    }
+
+    .about-list p{
+        font-size: 1rem;
+    }
+
+    #page-footer {
+        margin-top: -20%;
+    }
+}
+
+
+/* Burger Animation */
+.burger.active .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger.active .line2 {
+    opacity: 0;
+}
+
+.burger.active .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
